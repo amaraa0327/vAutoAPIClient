@@ -1,0 +1,33 @@
+﻿@model IEnumerable<vAuto.Models.DealerVM>
+<p>
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+</p>
+<p>
+    <input type="button" name="button" class="button1" value="Post answer" onclick="location.href='@Url.Action("PostAnswer", "Home")'"
+           @{ if(ViewBag.isComplete != true) { 
+             @:disabled="disabled" 
+        } } />
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.dealerId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.dealerId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.name)
+        </td>
+    </tr>
+}
+
+</table>
